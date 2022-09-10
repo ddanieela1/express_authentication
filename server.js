@@ -26,11 +26,12 @@ app.use(session({
 app.use(flash());            // flash middleware
 
 app.use((req,res,next)=>{
-  console.log('res locals >>>', res.locals)
+  console.log('res locals >>>', res.locals) //.local is an object inside of the .res, key value of res object
+  //res.local allowes to store data and use data
   res.locals.alerts =req.flash();
   res.locals.currentUser = req.user;
   next();
-})
+});
 
 app.get('/', (req, res) => {
   res.render('index');
